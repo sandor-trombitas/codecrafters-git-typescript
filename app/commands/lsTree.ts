@@ -34,6 +34,13 @@ function lsTree(args: Array<string>): void {
     treeEntries.push({ type, mode, hash, name });
   }
 
+  if (params.includes("--name-only")) {
+    for (const entry of treeEntries) {
+      console.log(entry.name);
+    }
+    return;
+  }
+
   for (const entry of treeEntries) {
     console.log(`${entry.mode} ${entry.type} ${entry.hash} ${entry.name}`);
   }
