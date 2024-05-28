@@ -27,7 +27,7 @@ function lsTree(args: Array<string>): void {
     nullIndex = body.indexOf("\0", spaceIndex);
 
     const mode = body.subarray(i, spaceIndex).toString();
-    const name = body.subarray(spaceIndex, nullIndex).toString();
+    const name = body.subarray(spaceIndex + 1, nullIndex).toString();
     const hash = body.subarray(nullIndex + 1, nullIndex + 21).toString("hex");
     const type = mode === "40000" ? "tree" : "blob";
 
