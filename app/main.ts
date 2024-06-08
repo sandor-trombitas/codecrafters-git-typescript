@@ -2,6 +2,7 @@ import { init } from "./commands/init";
 import { catFile } from "./commands/catFile";
 import { hashObject } from "./commands/hashObject";
 import { lsTree } from "./commands/lsTree";
+import { writeTree } from "./commands/writeTree";
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -11,6 +12,7 @@ enum Commands {
   CatFile = "cat-file",
   HashObject = "hash-object",
   LsTree = "ls-tree",
+  WriteTree = "write-tree",
 }
 
 switch (command) {
@@ -25,6 +27,9 @@ switch (command) {
     break;
   case Commands.LsTree:
     lsTree(args);
+    break;
+  case Commands.WriteTree:
+    console.log(writeTree(process.cwd()));
     break;
   default:
     throw new Error(`Unknown command ${command}`);
